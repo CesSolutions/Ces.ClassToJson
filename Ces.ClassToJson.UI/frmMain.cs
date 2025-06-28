@@ -1,7 +1,4 @@
-﻿using System.Reflection;
-using System.Text;
-
-namespace Ces.ClassToJson.UI
+﻿namespace Ces.ClassToJson.UI
 {
     public partial class frmMain : Form
     {
@@ -11,37 +8,91 @@ namespace Ces.ClassToJson.UI
         }
 
         private Ces.ClassToJson.ClassToJson _cls;
+        private string _assembplyPath;
+        private string _outputPath;
         private CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
-        private List<string> _types = new List<string>();
-        private List<TreeNode> _selectedNodes = new();
+        private List<string> _selectedNodes = new();
         private bool _expandAll;
 
         private async void btnReadObjects_Click(object sender, EventArgs e)
         {
-            var option = new Ces.ClassToJson.ClassToJsonOption
+            try
             {
-                AssemblyPath = @"C:\Users\Caspian\Desktop\Ces.Caspian\Ces.Caspian.Models\bin\Debug\net8.0\Ces.Caspian.Models.dll"
-            };
-
-            if (_cls == null)
-                _cls = new Ces.ClassToJson.ClassToJson(option);
-
-            var types = await _cls.GetTypeListAsync(_cancellationTokenSource.Token);
-
-            if (_types != null && _types.Count > 0)
+                btnReadObjects.Enabled = false;
+                await GetAssemblyObjectsClassAsync();
+            }
+            catch (Exception ex)
             {
-                _types.Clear();
-                _types.Capacity = 0;
+                _cancellationTokenSource.Cancel();
+                MessageBox.Show(ex.Message); ;
+            }
+            finally
+            {
+                btnReadObjects.Enabled = true;
+            }
+        }
+
+        private void btnExpandAll_Click(object sender, EventArgs e)
+        {
+            if (!_expandAll)
+            {
+                tvTypes.ExpandAll();
+                _expandAll = true;
+            }
+            else
+            {
+                tvTypes.CollapseAll();
+                _expandAll = false;
+            }
+        }
+
+        private async void btnConvertToJson_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                btnConvertToJson.Enabled = false;
+                _cancellationTokenSource = new CancellationTokenSource();
+
+                if (chkAllObjects.Checked)
+                    await ConvertAllAssembly();
+                else
+                    await ConvertSelectedNodes();
+            }
+            catch (Exception ex)
+            {
+                _cancellationTokenSource.Cancel();
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                btnConvertToJson.Enabled = true;
+            }
+
+        }
+
+        private async Task GetAssemblyObjectsClassAsync()
+        {
+            var classList = new List<string>();
+            var types = new List<Type>();
+
+            try
+            {
+                types = await _cls.GetObjectsAsync(_cancellationTokenSource.Token);
+            }
+            catch (Exception ex)
+            {
+                _cancellationTokenSource.Cancel();
+                MessageBox.Show(ex.Message);
             }
 
             if (tvTypes.Nodes.Count > 0)
                 tvTypes.Nodes.Clear();
 
             foreach (var type in types)
-                if (!_types.Contains(type.FullName))
-                    _types.Add(type.FullName);
+                if (!classList.Contains(type.FullName))
+                    classList.Add(type.FullName);
 
-            foreach (string type in _types)
+            foreach (string type in classList)
             {
                 var typeNames = type.Split('.');
                 var currentNodes = tvTypes.Nodes;
@@ -63,124 +114,134 @@ namespace Ces.ClassToJson.UI
             }
         }
 
-        private async void btnGetProperties_Click(object sender, EventArgs e)
+        private async Task ConvertSelectedNodes()
         {
-            if (tvTypes.SelectedNode == null)
+            _selectedNodes.Clear();
+            GetSelectedNodes();
+
+            if (_selectedNodes == null || _selectedNodes.Count == 0)
             {
-                MessageBox.Show("Selected a node");
+                MessageBox.Show("Select one node at least");
                 return;
             }
 
-            var nodeFullPath = tvTypes.SelectedNode.FullPath.Replace(@"\", ".");
-            var result = await GetProeprtiesAsync(nodeFullPath);
-
-            lbProperties.Items.Clear();
-
-            foreach (PropertyInfo prop in result)
-                lbProperties.Items.Add(prop.Name);
+            await _cls.ConvertToJsonAsync(_selectedNodes, _cancellationTokenSource.Token);
         }
 
-        private void btnExpandAll_Click(object sender, EventArgs e)
+        private async Task ConvertAllAssembly()
         {
-            if (!_expandAll)
-            {
-                tvTypes.ExpandAll();
-                _expandAll = true;
-            }
-            else
-            {
-                tvTypes.CollapseAll();
-                _expandAll = false;
-            }
+            await _cls.ConvertToJsonAsync(_cancellationTokenSource.Token);
         }
 
-        private async void btnConvertToJson_Click(object sender, EventArgs e)
-        {           
-            var selectedNodes = GetSelectedNodes();
-
-            if (selectedNodes == null || selectedNodes.Count == 0)
-            {
-                MessageBox.Show("Selected a node");
-                return;
-            }
-
-            await ConvertToJson(selectedNodes);
-        }
-
-        private async Task ConvertToJson(List<TreeNode> treeNodes)
+        private void GetSelectedNodes(TreeNode node = null)
         {
-            var sb = new StringBuilder();
-            var json = string.Empty;
-
-            sb.Append("{");
-
-            for (int n = 0; n < treeNodes.Count; n++)
-            {
-                var nodeFullPath = treeNodes[n].FullPath.Replace(@"\", ".");
-                var result = await GetProeprtiesAsync(nodeFullPath);
-
-                sb.Append($"\"{nodeFullPath}\":");
-                sb.Append("{");
-
-                for (int i = 0; i < result.Count; i++)
-                {
-                    if (i == result.Count - 1)
-                        sb.Append($"\"{result[i].Name}\" : \"\"");
-                    else
-                        sb.Append($"\"{result[i].Name}\" : \"\",");
-                }
-
-                if (n == treeNodes.Count - 1)
-                    sb.Append("}");
-                else
-                    sb.Append("},");
-            }
-
-            sb.Append("}");
-
-            json = sb.ToString();
-            txtJsonResult.Text = json;
-        }
-
-        private List<TreeNode> GetSelectedNodes()
-        {
-            foreach (TreeNode treeNode in tvTypes.Nodes)
+            foreach (TreeNode treeNode in node?.Nodes ?? tvTypes.Nodes)
             {
                 if (treeNode.Checked)
-                    _selectedNodes.Add(treeNode);
-
-                GetSelectedChildNodes(treeNode);
-            }
-
-            return _selectedNodes;
-        }
-
-        private void GetSelectedChildNodes(TreeNode node)
-        {
-            foreach (TreeNode treeNode in node.Nodes)
-            {
-                if (treeNode.Checked)
-                    _selectedNodes.Add(treeNode);
+                    _selectedNodes.Add(treeNode.FullPath.Replace(@"\", "."));
 
                 if (treeNode.Nodes.Count > 0)
-                    GetSelectedChildNodes(treeNode);
+                    GetSelectedNodes(treeNode);
             }
         }
 
-        private async Task<List<PropertyInfo>> GetProeprtiesAsync(string typeFullPath)
+        private void btnSelectFile_Click(object sender, EventArgs e)
         {
-            if (_cls == null)
+            var open = new OpenFileDialog();
+            open.Multiselect = false;
+            open.RestoreDirectory = true;
+            open.Title = "Choose assembly";
+            open.Filter = "DTO Models(*.dll)|*.dll";
+
+            try
+            {
+                if (open.ShowDialog(this) == DialogResult.OK)
+                {
+                    _assembplyPath = open.FileName;
+                    lblAssmeblyPath.Text = "Assembly: " + _assembplyPath;
+                    CreateInstance();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnClearSelection_Click(object sender, EventArgs e)
+        {
+            ClearSelectedNodes();
+        }
+
+        private void ClearSelectedNodes(TreeNode node = null)
+        {
+            foreach (TreeNode treeNode in node?.Nodes ?? tvTypes.Nodes)
+            {
+                if (treeNode.Checked)
+                    treeNode.Checked = false;
+
+                if (treeNode.Nodes.Count > 0)
+                    ClearSelectedNodes(treeNode);
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            var save = new SaveFileDialog();
+            save.AddExtension = true;
+            save.CheckWriteAccess = true;
+            save.Filter = "Json|*.json";
+            save.DefaultExt = ".json";
+            save.FileName = "ConvertToJson" + DateTime.Now.ToString(" _ yyyy-MM-dd _ HH-mm-ss");
+
+            try
+            {
+                if (save.ShowDialog(this) == DialogResult.OK)
+                {
+                    _outputPath = save.FileName;
+                    lblOutputPath.Text = "Save: " + _outputPath;
+                    CreateInstance();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void chkUseSamePath_CheckedChanged(object sender, EventArgs e)
+        {
+            CreateInstance();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            _cancellationTokenSource.Cancel();
+        }
+
+        private void chkOverwrite_CheckedChanged(object sender, EventArgs e)
+        {
+            CreateInstance();
+        }
+
+        private void CreateInstance()
+        {
+            try
             {
                 var option = new Ces.ClassToJson.ClassToJsonOption
                 {
-                    AssemblyPath = @"C:\Users\Caspian\Desktop\Ces.Caspian\Ces.Caspian.Models\bin\Debug\net8.0\Ces.Caspian.Models.dll"
+                    AssemblyPath = _assembplyPath,
+                    OutpuPath = _outputPath,
+                    UseAssemblyPath = chkUseSamePath.Checked,
+                    OverWrite = chkOverwrite.Checked
                 };
 
                 _cls = new Ces.ClassToJson.ClassToJson(option);
             }
-
-            var result = await _cls.GetPropertyListAsync(typeFullPath, _cancellationTokenSource.Token);
-            return result;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

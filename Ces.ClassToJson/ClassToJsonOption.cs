@@ -9,6 +9,7 @@
         /// In this case [OutpuPath] can be null or empty
         /// </summary>
         public bool UseAssemblyPath { get; set; } = true;
+        public bool OverWrite { get; set; } = false;
         public OutputTypeEnum OutputType { get; set; } = OutputTypeEnum.Json;
     }
 
