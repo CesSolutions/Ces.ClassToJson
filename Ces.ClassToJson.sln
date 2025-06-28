@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36109.1 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ces.ClassToJson", "Ces.ClassToJson\Ces.ClassToJson.csproj", "{978DD936-F281-4BBF-B767-53CECBFF4A99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ces.ClassToJson.UI", "Ces.ClassToJson.UI\Ces.ClassToJson.UI.csproj", "{2BA35942-C86B-4E26-B0D5-9F1B189754DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{978DD936-F281-4BBF-B767-53CECBFF4A99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{978DD936-F281-4BBF-B767-53CECBFF4A99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{978DD936-F281-4BBF-B767-53CECBFF4A99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BA35942-C86B-4E26-B0D5-9F1B189754DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BA35942-C86B-4E26-B0D5-9F1B189754DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BA35942-C86B-4E26-B0D5-9F1B189754DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BA35942-C86B-4E26-B0D5-9F1B189754DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
