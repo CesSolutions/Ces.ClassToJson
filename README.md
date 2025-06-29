@@ -7,7 +7,6 @@
 ***
 
 ## Ces.ClassToJson.UI
-> Feature
   - **TreeView:** Show classes inassembly base on namespaces.
   - **OutputWindow:** Shows created JSON string.
   - **ExpandAll:** Expands all nodes in tree view.
@@ -28,7 +27,6 @@
 ***
 
 ## Ces.ClassToJson
-> ClassToJsonOption
 
 ```csharp
 namespace Ces.ClassToJson
@@ -54,11 +52,6 @@ namespace Ces.ClassToJson
 
 ```
 
-## Methods
-- **GetObjectsAsync:** Return all classes in assembly then return a `List<Type>`.
-- **GetPropertiesAsync:** Return `List<string>` that consist of all properties of an object.
-- **ConvertToJsonAsync:** This method hae two overloads. If user dose not pass paramter, this method converts entire asembly to json otherwise only selected objects will convert to json. This method save result to file as stream.
-
 ## How to Use
 Create an instance of `ClassToJson` and pass `ClassToJsonOption` then use methods
 
@@ -73,6 +66,11 @@ var option = new Ces.ClassToJson.ClassToJsonOption
 
 _cls = new Ces.ClassToJson.ClassToJson(option);
 ```
+
+## Methods
+- **GetObjectsAsync:** Return all classes in assembly then return a `List<Type>`.
+- **GetPropertiesAsync:** Return `List<string>` that consist of all properties of an object.
+- **ConvertToJsonAsync:** This method hae two overloads. If user dose not pass paramter, this method converts entire asembly to json otherwise only selected objects will convert to json. This method save result to file as stream.
 
 <div align="center">
 <img src="https://github.com/user-attachments/assets/81681176-3ac4-45b7-a1b2-e30600404d10">
