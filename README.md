@@ -22,7 +22,7 @@
   - **Overwrite if file exist:** Because of default naming of out JSON file consist of a fixed string and current date with time (ClassToJSon _ 2025-10-25 _ 23-20-65), it is possible that user click on convert button twice in a minute. If file exist already, application throw an exception otherwise user check this option to overwrite on existig file.
 
 <div align="center">
-<img src="https://github.com/user-attachments/assets/9137a748-f2d6-491f-a476-bbd692bb363d">
+<img src="https://github.com/user-attachments/assets/9137a748-f2d6-491f-a476-bbd692bb363d" width=1000>
 </div>
 
 ***
