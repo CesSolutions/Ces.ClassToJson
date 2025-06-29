@@ -36,6 +36,7 @@ namespace Ces.ClassToJson.UI
             {
                 btnConvertToJson.Enabled = false;
                 _cancellationTokenSource = new CancellationTokenSource();
+                CreateInstance();
 
                 if (chkAllObjects.Checked)
                     await ConvertAllAssembly();
@@ -197,7 +198,6 @@ namespace Ces.ClassToJson.UI
         private void chkUseSamePath_CheckedChanged(object sender, EventArgs e)
         {
             btnOutputPath.Enabled = !chkUseSamePath.Checked;
-            CreateInstance();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -207,7 +207,6 @@ namespace Ces.ClassToJson.UI
 
         private void chkOverwrite_CheckedChanged(object sender, EventArgs e)
         {
-            CreateInstance();
         }
 
         private void CreateInstance()
@@ -219,7 +218,9 @@ namespace Ces.ClassToJson.UI
                     AssemblyPath = _assembplyPath,
                     OutpuPath = _outputPath,
                     UseAssemblyPath = chkUseSamePath.Checked,
-                    OverWrite = chkOverwrite.Checked
+                    OverWrite = chkOverwrite.Checked,
+                    RemoveNamespaceDelimiter = chkRemoveNamespaceDelimiter.Checked,
+                    NamespaceDelimiter = string.IsNullOrEmpty(txtNamespaceDelimiter.Text) ? null : char.Parse(txtNamespaceDelimiter.Text)
                 };
 
                 _cls = new Ces.ClassToJson.ClassToJson(option);
@@ -244,6 +245,10 @@ namespace Ces.ClassToJson.UI
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void chkRemoveNamespaceDelimiter_CheckedChanged(object sender, EventArgs e)
+        {
         }
     }
 }

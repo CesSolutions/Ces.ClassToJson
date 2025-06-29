@@ -14,8 +14,8 @@
         /// <summary>
         /// A namespace delimited by dot (.) and user can replace with another character
         /// </summary>
-        public bool ReplaceNamespaceDelimiter { get; set; }
-        public char NamespaceDelimiter { get; set; }
+        public bool RemoveNamespaceDelimiter { get; set; }        
+        public char? NamespaceDelimiter { get; set; }
     }
 
     public enum OutputTypeEnum

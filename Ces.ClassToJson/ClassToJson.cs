@@ -127,7 +127,11 @@ namespace Ces.ClassToJson
 
                         var result = await GetPropertiesAsync(typesFulleName[n]);
 
-                        sb.Append($"\"{typesFulleName[n]}\":");
+                        if (_option.RemoveNamespaceDelimiter)
+                            sb.Append($"\"{typesFulleName[n].Replace(".", _option.NamespaceDelimiter.ToString().Trim())}\":");
+                        else
+                            sb.Append($"\"{typesFulleName[n]}\":");
+
                         sb.Append("{");
 
                         for (int i = 0; i < result.Count; i++)

@@ -33,13 +33,15 @@
             pnlMain = new Panel();
             txtJsonResult = new TextBox();
             pnlTop = new Panel();
-            gbLoadAndSave = new GroupBox();
+            gbAssembly = new GroupBox();
             chkUseSamePath = new CheckBox();
             lblOutputPath = new Label();
             btnOutputPath = new Button();
             btnSelectFile = new Button();
             lblAssmeblyPath = new Label();
             gbConvert = new GroupBox();
+            txtNamespaceDelimiter = new TextBox();
+            chkRemoveNamespaceDelimiter = new CheckBox();
             chkOverwrite = new CheckBox();
             btnConvertToJson = new Button();
             chkAllObjects = new CheckBox();
@@ -49,7 +51,7 @@
             btnExpandAll = new Button();
             pnlMain.SuspendLayout();
             pnlTop.SuspendLayout();
-            gbLoadAndSave.SuspendLayout();
+            gbAssembly.SuspendLayout();
             gbConvert.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -99,7 +101,7 @@
             // 
             // pnlTop
             // 
-            pnlTop.Controls.Add(gbLoadAndSave);
+            pnlTop.Controls.Add(gbAssembly);
             pnlTop.Controls.Add(gbConvert);
             pnlTop.Dock = DockStyle.Top;
             pnlTop.Location = new Point(0, 0);
@@ -107,20 +109,20 @@
             pnlTop.Size = new Size(573, 220);
             pnlTop.TabIndex = 12;
             // 
-            // gbLoadAndSave
+            // gbAssembly
             // 
-            gbLoadAndSave.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            gbLoadAndSave.Controls.Add(chkUseSamePath);
-            gbLoadAndSave.Controls.Add(lblOutputPath);
-            gbLoadAndSave.Controls.Add(btnOutputPath);
-            gbLoadAndSave.Controls.Add(btnSelectFile);
-            gbLoadAndSave.Controls.Add(lblAssmeblyPath);
-            gbLoadAndSave.Location = new Point(6, 12);
-            gbLoadAndSave.Name = "gbLoadAndSave";
-            gbLoadAndSave.Size = new Size(557, 122);
-            gbLoadAndSave.TabIndex = 12;
-            gbLoadAndSave.TabStop = false;
-            gbLoadAndSave.Text = "Load && Save";
+            gbAssembly.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            gbAssembly.Controls.Add(chkUseSamePath);
+            gbAssembly.Controls.Add(lblOutputPath);
+            gbAssembly.Controls.Add(btnOutputPath);
+            gbAssembly.Controls.Add(btnSelectFile);
+            gbAssembly.Controls.Add(lblAssmeblyPath);
+            gbAssembly.Location = new Point(6, 12);
+            gbAssembly.Name = "gbAssembly";
+            gbAssembly.Size = new Size(557, 122);
+            gbAssembly.TabIndex = 12;
+            gbAssembly.TabStop = false;
+            gbAssembly.Text = "Assembly";
             // 
             // chkUseSamePath
             // 
@@ -188,6 +190,8 @@
             // gbConvert
             // 
             gbConvert.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            gbConvert.Controls.Add(txtNamespaceDelimiter);
+            gbConvert.Controls.Add(chkRemoveNamespaceDelimiter);
             gbConvert.Controls.Add(chkOverwrite);
             gbConvert.Controls.Add(btnConvertToJson);
             gbConvert.Controls.Add(chkAllObjects);
@@ -198,10 +202,30 @@
             gbConvert.TabStop = false;
             gbConvert.Text = "Convert";
             // 
+            // txtNamespaceDelimiter
+            // 
+            txtNamespaceDelimiter.Location = new Point(473, 41);
+            txtNamespaceDelimiter.MaxLength = 1;
+            txtNamespaceDelimiter.Name = "txtNamespaceDelimiter";
+            txtNamespaceDelimiter.Size = new Size(78, 23);
+            txtNamespaceDelimiter.TabIndex = 11;
+            txtNamespaceDelimiter.TextAlign = HorizontalAlignment.Center;
+            // 
+            // chkRemoveNamespaceDelimiter
+            // 
+            chkRemoveNamespaceDelimiter.AutoSize = true;
+            chkRemoveNamespaceDelimiter.Location = new Point(282, 43);
+            chkRemoveNamespaceDelimiter.Name = "chkRemoveNamespaceDelimiter";
+            chkRemoveNamespaceDelimiter.Size = new Size(185, 19);
+            chkRemoveNamespaceDelimiter.TabIndex = 10;
+            chkRemoveNamespaceDelimiter.Text = "Remove Namespace Delimiter";
+            chkRemoveNamespaceDelimiter.UseVisualStyleBackColor = true;
+            chkRemoveNamespaceDelimiter.CheckedChanged += chkRemoveNamespaceDelimiter_CheckedChanged;
+            // 
             // chkOverwrite
             // 
             chkOverwrite.AutoSize = true;
-            chkOverwrite.Location = new Point(415, 34);
+            chkOverwrite.Location = new Point(143, 43);
             chkOverwrite.Name = "chkOverwrite";
             chkOverwrite.Size = new Size(133, 19);
             chkOverwrite.TabIndex = 9;
@@ -222,7 +246,7 @@
             // chkAllObjects
             // 
             chkAllObjects.AutoSize = true;
-            chkAllObjects.Location = new Point(143, 34);
+            chkAllObjects.Location = new Point(143, 22);
             chkAllObjects.Name = "chkAllObjects";
             chkAllObjects.Size = new Size(266, 19);
             chkAllObjects.TabIndex = 8;
@@ -296,8 +320,8 @@
             pnlMain.ResumeLayout(false);
             pnlMain.PerformLayout();
             pnlTop.ResumeLayout(false);
-            gbLoadAndSave.ResumeLayout(false);
-            gbLoadAndSave.PerformLayout();
+            gbAssembly.ResumeLayout(false);
+            gbAssembly.PerformLayout();
             gbConvert.ResumeLayout(false);
             gbConvert.PerformLayout();
             splitContainer1.Panel1.ResumeLayout(false);
@@ -320,12 +344,14 @@
         private Button btnClearSelection;
         private GroupBox gbConvert;
         private Panel pnlTop;
-        private GroupBox gbLoadAndSave;
+        private GroupBox gbAssembly;
         private Button btnOutputPath;
         private Label lblOutputPath;
         private Label lblAssmeblyPath;
         private CheckBox chkUseSamePath;
         private Button btnCancel;
         private CheckBox chkOverwrite;
+        private TextBox txtNamespaceDelimiter;
+        private CheckBox chkRemoveNamespaceDelimiter;
     }
 }
