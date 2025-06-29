@@ -149,6 +149,7 @@
             // lblOutputPath
             // 
             lblOutputPath.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblOutputPath.AutoEllipsis = true;
             lblOutputPath.BackColor = SystemColors.Control;
             lblOutputPath.Cursor = Cursors.Hand;
             lblOutputPath.ForeColor = Color.FromArgb(0, 192, 0);
@@ -182,6 +183,7 @@
             // lblAssmeblyPath
             // 
             lblAssmeblyPath.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblAssmeblyPath.AutoEllipsis = true;
             lblAssmeblyPath.BackColor = SystemColors.Control;
             lblAssmeblyPath.Cursor = Cursors.Hand;
             lblAssmeblyPath.ForeColor = Color.Blue;

@@ -230,9 +230,6 @@ namespace Ces.ClassToJson.UI
         {
             try
             {
-                lblAssmeblyPath.Text = "Assembly : " + _assembplyPath;
-                lblOutputPath.Text = "Output : " + _outputPath;
-
                 var option = new Ces.ClassToJson.ClassToJsonOption
                 {
                     AssemblyPath = _assembplyPath,
@@ -242,6 +239,9 @@ namespace Ces.ClassToJson.UI
                 };
 
                 _cls = new Ces.ClassToJson.ClassToJson(option);
+
+                lblAssmeblyPath.Text = "Assembly : " + _cls._option.AssemblyPath;
+                lblOutputPath.Text = "Output : " + _cls._option.OutpuPath;
             }
             catch (Exception ex)
             {
