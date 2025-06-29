@@ -1,4 +1,6 @@
-﻿namespace Ces.ClassToJson.UI
+﻿using System.Diagnostics;
+
+namespace Ces.ClassToJson.UI
 {
     public partial class frmMain : Form
     {
@@ -24,7 +26,7 @@
             catch (Exception ex)
             {
                 _cancellationTokenSource.Cancel();
-                MessageBox.Show(ex.Message); ;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -57,6 +59,8 @@
                     await ConvertAllAssembly();
                 else
                     await ConvertSelectedNodes();
+
+                txtJsonResult.Text = System.IO.File.ReadAllText(_cls._option.OutpuPath);
             }
             catch (Exception ex)
             {
@@ -158,7 +162,6 @@
                 if (open.ShowDialog(this) == DialogResult.OK)
                 {
                     _assembplyPath = open.FileName;
-                    lblAssmeblyPath.Text = "Assembly: " + _assembplyPath;
                     CreateInstance();
                 }
             }
@@ -199,7 +202,6 @@
                 if (save.ShowDialog(this) == DialogResult.OK)
                 {
                     _outputPath = save.FileName;
-                    lblOutputPath.Text = "Save: " + _outputPath;
                     CreateInstance();
                 }
             }
@@ -211,6 +213,7 @@
 
         private void chkUseSamePath_CheckedChanged(object sender, EventArgs e)
         {
+            btnOutputPath.Enabled = !chkUseSamePath.Checked;
             CreateInstance();
         }
 
@@ -228,6 +231,9 @@
         {
             try
             {
+                lblAssmeblyPath.Text = "Assembly : " + _assembplyPath;
+                lblOutputPath.Text = "Output : " + _outputPath;
+
                 var option = new Ces.ClassToJson.ClassToJsonOption
                 {
                     AssemblyPath = _assembplyPath,
@@ -237,6 +243,19 @@
                 };
 
                 _cls = new Ces.ClassToJson.ClassToJson(option);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void lblAssmeblyPath_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_cls != null)
+                    Process.Start("explorer.exe", System.IO.Path.GetDirectoryName(_cls._option.AssemblyPath));
             }
             catch (Exception ex)
             {

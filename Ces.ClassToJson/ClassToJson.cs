@@ -5,7 +5,11 @@ namespace Ces.ClassToJson
 {
     public class ClassToJson
     {
-        private ClassToJsonOption _option;
+        /// <summary>
+        /// option must be accessible after initianlization because initialze method
+        /// configure parameters and may be used by developer
+        /// </summary>
+        public ClassToJsonOption _option;
         private Assembly _assembly;
 
         public ClassToJson(ClassToJsonOption option)

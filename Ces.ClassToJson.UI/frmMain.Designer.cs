@@ -41,13 +41,13 @@
             btnSelectFile = new Button();
             lblAssmeblyPath = new Label();
             gbReadAndConvert = new GroupBox();
+            chkOverwrite = new CheckBox();
             btnConvertToJson = new Button();
             chkAllObjects = new CheckBox();
             splitContainer1 = new SplitContainer();
             btnCancel = new Button();
             btnClearSelection = new Button();
             btnExpandAll = new Button();
-            chkOverwrite = new CheckBox();
             pnlMain.SuspendLayout();
             pnlTop.SuspendLayout();
             gbLoadAndSave.SuspendLayout();
@@ -73,7 +73,7 @@
             splitter1.BackColor = SystemColors.Control;
             splitter1.Location = new Point(441, 0);
             splitter1.Name = "splitter1";
-            splitter1.Size = new Size(5, 452);
+            splitter1.Size = new Size(5, 513);
             splitter1.TabIndex = 2;
             splitter1.TabStop = false;
             // 
@@ -85,7 +85,7 @@
             tvTypes.HotTracking = true;
             tvTypes.Location = new Point(0, 0);
             tvTypes.Name = "tvTypes";
-            tvTypes.Size = new Size(441, 395);
+            tvTypes.Size = new Size(441, 456);
             tvTypes.TabIndex = 3;
             // 
             // pnlMain
@@ -95,7 +95,7 @@
             pnlMain.Dock = DockStyle.Fill;
             pnlMain.Location = new Point(446, 0);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(582, 452);
+            pnlMain.Size = new Size(573, 513);
             pnlMain.TabIndex = 6;
             // 
             // txtJsonResult
@@ -104,8 +104,8 @@
             txtJsonResult.Location = new Point(0, 220);
             txtJsonResult.Multiline = true;
             txtJsonResult.Name = "txtJsonResult";
-            txtJsonResult.ScrollBars = ScrollBars.Horizontal;
-            txtJsonResult.Size = new Size(582, 232);
+            txtJsonResult.ScrollBars = ScrollBars.Both;
+            txtJsonResult.Size = new Size(573, 293);
             txtJsonResult.TabIndex = 7;
             // 
             // pnlTop
@@ -115,7 +115,7 @@
             pnlTop.Dock = DockStyle.Top;
             pnlTop.Location = new Point(0, 0);
             pnlTop.Name = "pnlTop";
-            pnlTop.Size = new Size(582, 220);
+            pnlTop.Size = new Size(573, 220);
             pnlTop.TabIndex = 12;
             // 
             // gbLoadAndSave
@@ -128,7 +128,7 @@
             gbLoadAndSave.Controls.Add(lblAssmeblyPath);
             gbLoadAndSave.Location = new Point(6, 12);
             gbLoadAndSave.Name = "gbLoadAndSave";
-            gbLoadAndSave.Size = new Size(566, 122);
+            gbLoadAndSave.Size = new Size(557, 122);
             gbLoadAndSave.TabIndex = 12;
             gbLoadAndSave.TabStop = false;
             gbLoadAndSave.Text = "Load && Save";
@@ -150,9 +150,11 @@
             // 
             lblOutputPath.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblOutputPath.BackColor = SystemColors.Control;
-            lblOutputPath.Location = new Point(6, 92);
+            lblOutputPath.Cursor = Cursors.Hand;
+            lblOutputPath.ForeColor = Color.FromArgb(0, 192, 0);
+            lblOutputPath.Location = new Point(6, 93);
             lblOutputPath.Name = "lblOutputPath";
-            lblOutputPath.Size = new Size(554, 20);
+            lblOutputPath.Size = new Size(545, 20);
             lblOutputPath.TabIndex = 12;
             lblOutputPath.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -181,11 +183,14 @@
             // 
             lblAssmeblyPath.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblAssmeblyPath.BackColor = SystemColors.Control;
-            lblAssmeblyPath.Location = new Point(6, 66);
+            lblAssmeblyPath.Cursor = Cursors.Hand;
+            lblAssmeblyPath.ForeColor = Color.Blue;
+            lblAssmeblyPath.Location = new Point(6, 67);
             lblAssmeblyPath.Name = "lblAssmeblyPath";
-            lblAssmeblyPath.Size = new Size(554, 20);
+            lblAssmeblyPath.Size = new Size(545, 20);
             lblAssmeblyPath.TabIndex = 10;
             lblAssmeblyPath.TextAlign = ContentAlignment.MiddleLeft;
+            lblAssmeblyPath.Click += lblAssmeblyPath_Click;
             // 
             // gbReadAndConvert
             // 
@@ -196,10 +201,21 @@
             gbReadAndConvert.Controls.Add(btnReadObjects);
             gbReadAndConvert.Location = new Point(6, 140);
             gbReadAndConvert.Name = "gbReadAndConvert";
-            gbReadAndConvert.Size = new Size(566, 75);
+            gbReadAndConvert.Size = new Size(557, 75);
             gbReadAndConvert.TabIndex = 11;
             gbReadAndConvert.TabStop = false;
             gbReadAndConvert.Text = "Read && Convert";
+            // 
+            // chkOverwrite
+            // 
+            chkOverwrite.AutoSize = true;
+            chkOverwrite.Location = new Point(280, 44);
+            chkOverwrite.Name = "chkOverwrite";
+            chkOverwrite.Size = new Size(133, 19);
+            chkOverwrite.TabIndex = 9;
+            chkOverwrite.Text = "Overwrite if file exist";
+            chkOverwrite.UseVisualStyleBackColor = true;
+            chkOverwrite.CheckedChanged += chkOverwrite_CheckedChanged;
             // 
             // btnConvertToJson
             // 
@@ -238,8 +254,8 @@
             splitContainer1.Panel2.Controls.Add(btnCancel);
             splitContainer1.Panel2.Controls.Add(btnClearSelection);
             splitContainer1.Panel2.Controls.Add(btnExpandAll);
-            splitContainer1.Size = new Size(441, 452);
-            splitContainer1.SplitterDistance = 395;
+            splitContainer1.Size = new Size(441, 513);
+            splitContainer1.SplitterDistance = 456;
             splitContainer1.TabIndex = 11;
             // 
             // btnCancel
@@ -274,29 +290,17 @@
             btnExpandAll.UseVisualStyleBackColor = true;
             btnExpandAll.Click += btnExpandAll_Click;
             // 
-            // chkOverwrite
-            // 
-            chkOverwrite.AutoSize = true;
-            chkOverwrite.Location = new Point(280, 44);
-            chkOverwrite.Name = "chkOverwrite";
-            chkOverwrite.Size = new Size(133, 19);
-            chkOverwrite.TabIndex = 9;
-            chkOverwrite.Text = "Overwrite if file exist";
-            chkOverwrite.UseVisualStyleBackColor = true;
-            chkOverwrite.CheckedChanged += chkOverwrite_CheckedChanged;
-            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1028, 452);
+            ClientSize = new Size(1019, 513);
             Controls.Add(pnlMain);
             Controls.Add(splitter1);
             Controls.Add(splitContainer1);
             Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Class To Json";
-            WindowState = FormWindowState.Maximized;
             pnlMain.ResumeLayout(false);
             pnlMain.PerformLayout();
             pnlTop.ResumeLayout(false);
