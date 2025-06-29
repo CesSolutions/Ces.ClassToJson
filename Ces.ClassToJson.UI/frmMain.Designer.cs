@@ -205,6 +205,7 @@
             // 
             // txtNamespaceDelimiter
             // 
+            txtNamespaceDelimiter.Enabled = false;
             txtNamespaceDelimiter.Location = new Point(473, 41);
             txtNamespaceDelimiter.MaxLength = 1;
             txtNamespaceDelimiter.Name = "txtNamespaceDelimiter";
@@ -232,7 +233,6 @@
             chkOverwrite.TabIndex = 9;
             chkOverwrite.Text = "Overwrite if file exist";
             chkOverwrite.UseVisualStyleBackColor = true;
-            chkOverwrite.CheckedChanged += chkOverwrite_CheckedChanged;
             // 
             // btnConvertToJson
             // 

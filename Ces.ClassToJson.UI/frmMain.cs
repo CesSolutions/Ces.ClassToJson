@@ -205,10 +205,6 @@ namespace Ces.ClassToJson.UI
             _cancellationTokenSource.Cancel();
         }
 
-        private void chkOverwrite_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
         private void CreateInstance()
         {
             try
@@ -247,10 +243,6 @@ namespace Ces.ClassToJson.UI
             }
         }
 
-        private void chkRemoveNamespaceDelimiter_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
         private void tvTypes_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             CheckChildNodes(e.Node);
@@ -266,6 +258,11 @@ namespace Ces.ClassToJson.UI
                     if (node.GetNodeCount(false) > 0)
                         CheckChildNodes(item);
                 }
+        }
+
+        private void chkRemoveNamespaceDelimiter_CheckedChanged(object sender, EventArgs e)
+        {
+            txtNamespaceDelimiter.Enabled = chkRemoveNamespaceDelimiter.Checked;
         }
     }
 }
