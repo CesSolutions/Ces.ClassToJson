@@ -250,5 +250,22 @@ namespace Ces.ClassToJson.UI
         private void chkRemoveNamespaceDelimiter_CheckedChanged(object sender, EventArgs e)
         {
         }
+
+        private void tvTypes_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            CheckChildNodes(e.Node);
+        }
+
+        private void CheckChildNodes(TreeNode node)
+        {
+            if (node.Checked && node.GetNodeCount(false) > 0)
+                foreach (TreeNode item in node.Nodes)
+                {
+                    item.Checked = true;
+
+                    if (node.GetNodeCount(false) > 0)
+                        CheckChildNodes(item);
+                }
+        }
     }
 }

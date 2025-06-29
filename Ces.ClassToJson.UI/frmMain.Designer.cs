@@ -78,6 +78,7 @@
             tvTypes.Name = "tvTypes";
             tvTypes.Size = new Size(441, 456);
             tvTypes.TabIndex = 3;
+            tvTypes.NodeMouseClick += tvTypes_NodeMouseClick;
             // 
             // pnlMain
             // 
