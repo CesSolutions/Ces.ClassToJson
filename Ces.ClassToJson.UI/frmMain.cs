@@ -192,7 +192,6 @@ namespace Ces.ClassToJson.UI
         {
             var save = new SaveFileDialog();
             save.AddExtension = true;
-            save.CheckWriteAccess = true;
             save.Filter = "Json|*.json";
             save.DefaultExt = ".json";
             save.FileName = "ConvertToJson" + DateTime.Now.ToString(" _ yyyy-MM-dd _ HH-mm-ss");
