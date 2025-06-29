@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnReadObjects = new Button();
             splitter1 = new Splitter();
             tvTypes = new TreeView();
             pnlMain = new Panel();
@@ -40,7 +39,7 @@
             btnOutputPath = new Button();
             btnSelectFile = new Button();
             lblAssmeblyPath = new Label();
-            gbReadAndConvert = new GroupBox();
+            gbConvert = new GroupBox();
             chkOverwrite = new CheckBox();
             btnConvertToJson = new Button();
             chkAllObjects = new CheckBox();
@@ -51,22 +50,12 @@
             pnlMain.SuspendLayout();
             pnlTop.SuspendLayout();
             gbLoadAndSave.SuspendLayout();
-            gbReadAndConvert.SuspendLayout();
+            gbConvert.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             SuspendLayout();
-            // 
-            // btnReadObjects
-            // 
-            btnReadObjects.Location = new Point(6, 22);
-            btnReadObjects.Name = "btnReadObjects";
-            btnReadObjects.Size = new Size(131, 40);
-            btnReadObjects.TabIndex = 0;
-            btnReadObjects.Text = "Read Objects";
-            btnReadObjects.UseVisualStyleBackColor = true;
-            btnReadObjects.Click += btnReadObjects_Click;
             // 
             // splitter1
             // 
@@ -111,7 +100,7 @@
             // pnlTop
             // 
             pnlTop.Controls.Add(gbLoadAndSave);
-            pnlTop.Controls.Add(gbReadAndConvert);
+            pnlTop.Controls.Add(gbConvert);
             pnlTop.Dock = DockStyle.Top;
             pnlTop.Location = new Point(0, 0);
             pnlTop.Name = "pnlTop";
@@ -152,8 +141,9 @@
             lblOutputPath.AutoEllipsis = true;
             lblOutputPath.BackColor = SystemColors.Control;
             lblOutputPath.Cursor = Cursors.Hand;
+            lblOutputPath.Font = new Font("Segoe UI", 8F);
             lblOutputPath.ForeColor = Color.FromArgb(0, 192, 0);
-            lblOutputPath.Location = new Point(6, 93);
+            lblOutputPath.Location = new Point(6, 97);
             lblOutputPath.Name = "lblOutputPath";
             lblOutputPath.Size = new Size(545, 20);
             lblOutputPath.TabIndex = 12;
@@ -186,32 +176,32 @@
             lblAssmeblyPath.AutoEllipsis = true;
             lblAssmeblyPath.BackColor = SystemColors.Control;
             lblAssmeblyPath.Cursor = Cursors.Hand;
+            lblAssmeblyPath.Font = new Font("Segoe UI", 8F);
             lblAssmeblyPath.ForeColor = Color.Blue;
-            lblAssmeblyPath.Location = new Point(6, 67);
+            lblAssmeblyPath.Location = new Point(6, 73);
             lblAssmeblyPath.Name = "lblAssmeblyPath";
             lblAssmeblyPath.Size = new Size(545, 20);
             lblAssmeblyPath.TabIndex = 10;
             lblAssmeblyPath.TextAlign = ContentAlignment.MiddleLeft;
             lblAssmeblyPath.Click += lblAssmeblyPath_Click;
             // 
-            // gbReadAndConvert
+            // gbConvert
             // 
-            gbReadAndConvert.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            gbReadAndConvert.Controls.Add(chkOverwrite);
-            gbReadAndConvert.Controls.Add(btnConvertToJson);
-            gbReadAndConvert.Controls.Add(chkAllObjects);
-            gbReadAndConvert.Controls.Add(btnReadObjects);
-            gbReadAndConvert.Location = new Point(6, 140);
-            gbReadAndConvert.Name = "gbReadAndConvert";
-            gbReadAndConvert.Size = new Size(557, 75);
-            gbReadAndConvert.TabIndex = 11;
-            gbReadAndConvert.TabStop = false;
-            gbReadAndConvert.Text = "Read && Convert";
+            gbConvert.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            gbConvert.Controls.Add(chkOverwrite);
+            gbConvert.Controls.Add(btnConvertToJson);
+            gbConvert.Controls.Add(chkAllObjects);
+            gbConvert.Location = new Point(6, 140);
+            gbConvert.Name = "gbConvert";
+            gbConvert.Size = new Size(557, 75);
+            gbConvert.TabIndex = 11;
+            gbConvert.TabStop = false;
+            gbConvert.Text = "Convert";
             // 
             // chkOverwrite
             // 
             chkOverwrite.AutoSize = true;
-            chkOverwrite.Location = new Point(280, 44);
+            chkOverwrite.Location = new Point(415, 34);
             chkOverwrite.Name = "chkOverwrite";
             chkOverwrite.Size = new Size(133, 19);
             chkOverwrite.TabIndex = 9;
@@ -221,7 +211,7 @@
             // 
             // btnConvertToJson
             // 
-            btnConvertToJson.Location = new Point(143, 22);
+            btnConvertToJson.Location = new Point(6, 22);
             btnConvertToJson.Name = "btnConvertToJson";
             btnConvertToJson.Size = new Size(131, 40);
             btnConvertToJson.TabIndex = 6;
@@ -232,7 +222,7 @@
             // chkAllObjects
             // 
             chkAllObjects.AutoSize = true;
-            chkAllObjects.Location = new Point(280, 20);
+            chkAllObjects.Location = new Point(143, 34);
             chkAllObjects.Name = "chkAllObjects";
             chkAllObjects.Size = new Size(266, 19);
             chkAllObjects.TabIndex = 8;
@@ -308,8 +298,8 @@
             pnlTop.ResumeLayout(false);
             gbLoadAndSave.ResumeLayout(false);
             gbLoadAndSave.PerformLayout();
-            gbReadAndConvert.ResumeLayout(false);
-            gbReadAndConvert.PerformLayout();
+            gbConvert.ResumeLayout(false);
+            gbConvert.PerformLayout();
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
@@ -318,8 +308,6 @@
         }
 
         #endregion
-
-        private Button btnReadObjects;
         private Splitter splitter1;
         private TreeView tvTypes;
         private Panel pnlMain;
@@ -330,7 +318,7 @@
         private Button btnSelectFile;
         private SplitContainer splitContainer1;
         private Button btnClearSelection;
-        private GroupBox gbReadAndConvert;
+        private GroupBox gbConvert;
         private Panel pnlTop;
         private GroupBox gbLoadAndSave;
         private Button btnOutputPath;

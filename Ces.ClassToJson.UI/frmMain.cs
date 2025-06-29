@@ -16,24 +16,6 @@ namespace Ces.ClassToJson.UI
         private List<string> _selectedNodes = new();
         private bool _expandAll;
 
-        private async void btnReadObjects_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                btnReadObjects.Enabled = false;
-                await GetAssemblyObjectsClassAsync();
-            }
-            catch (Exception ex)
-            {
-                _cancellationTokenSource.Cancel();
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                btnReadObjects.Enabled = true;
-            }
-        }
-
         private void btnExpandAll_Click(object sender, EventArgs e)
         {
             if (!_expandAll)
@@ -149,7 +131,7 @@ namespace Ces.ClassToJson.UI
             }
         }
 
-        private void btnSelectFile_Click(object sender, EventArgs e)
+        private async void btnSelectFile_Click(object sender, EventArgs e)
         {
             var open = new OpenFileDialog();
             open.Multiselect = false;
@@ -163,10 +145,12 @@ namespace Ces.ClassToJson.UI
                 {
                     _assembplyPath = open.FileName;
                     CreateInstance();
+                    await GetAssemblyObjectsClassAsync();
                 }
             }
             catch (Exception ex)
             {
+                _cancellationTokenSource.Cancel();
                 MessageBox.Show(ex.Message);
             }
         }
