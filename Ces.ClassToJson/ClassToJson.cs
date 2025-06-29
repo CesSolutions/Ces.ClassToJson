@@ -179,9 +179,9 @@ namespace Ces.ClassToJson
 
                             //In JSON format, Last item shall not have (,)
                             if (i == result.Count - 1)
-                                sb.Append($"\"{result[i].Name}\" : \"\"");
+                                sb.Append($"\"{result[i].Name}\":\"\"");
                             else
-                                sb.Append($"\"{result[i].Name}\" : \"\",");
+                                sb.Append($"\"{result[i].Name}\":\"\",");
                         }
 
                         //In JSON format, Last item shall not have (,)
