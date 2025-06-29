@@ -55,8 +55,21 @@ namespace Ces.ClassToJson
 ```
 
 ## Methods
-- **GetObjectsAsync:** Return all classes in assembly then return a List< Type >.
-- **GetPropertiesAsync:** Return List<string> that consist of all properties of an object.
+- **GetObjectsAsync:** Return all classes in assembly then return a `List<Type>`.
+- **GetPropertiesAsync:** Return `List<string>` that consist of all properties of an object.
 - **ConvertToJsonAsync:** This method hae two overloads. If user dose not pass paramter, this method converts entire asembly to json otherwise only selected objects will convert to json. This method save result to file as stream.
 
+## How to Use
+Create an instance of `ClassToJson` and pass `ClassToJsonOption` then use methods
 
+```csharp
+var option = new Ces.ClassToJson.ClassToJsonOption
+{
+    AssemblyPath = _assembplyPath,
+    OutpuPath = _outputPath,
+    UseAssemblyPath = chkUseSamePath.Checked,
+    OverWrite = chkOverwrite.Checked
+};
+
+_cls = new Ces.ClassToJson.ClassToJson(option);
+```
