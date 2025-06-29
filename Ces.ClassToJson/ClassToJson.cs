@@ -61,8 +61,7 @@ namespace Ces.ClassToJson
         /// <returns></returns>
         /// <exception cref="OperationCanceledException"></exception>
         public async Task<List<PropertyInfo>> GetPropertiesAsync(
-            string classFullName,
-            CancellationToken cancellationToken = default)
+            string classFullName, CancellationToken cancellationToken = default)
         {
             if (cancellationToken.IsCancellationRequested)
                 throw new OperationCanceledException();
@@ -86,59 +85,9 @@ namespace Ces.ClassToJson
         /// <param name="typesFulleName">List of typs' fullname</param>
         /// <returns></returns>
         public async Task ConvertToJsonAsync(
-            List<string> typesFulleName,
-            CancellationToken cancellationToken = default)
+            List<string> typesFulleName, CancellationToken cancellationToken = default)
         {
-            if (System.IO.File.Exists(_option.OutpuPath) && !_option.OverWrite)
-                throw new Exception("Overwrite is not allowes");
-
-            var sb = new StringBuilder();
-
-            using (FileStream fs = new FileStream(_option.OutpuPath, FileMode.Create, FileAccess.Write))
-            {
-                using (StreamWriter sw = new StreamWriter(stream: fs))
-                {
-                    sb.Append("{");
-
-                    for (int n = 0; n < typesFulleName.Count; n++)
-                    {
-                        if (cancellationToken.IsCancellationRequested)
-                            throw new OperationCanceledException();
-
-                        var result = await GetPropertiesAsync(typesFulleName[n]);
-
-                        sb.Append($"\"{typesFulleName[n]}\":");
-                        sb.Append("{");
-
-                        for (int i = 0; i < result.Count; i++)
-                        {
-                            if (cancellationToken.IsCancellationRequested)
-                                throw new OperationCanceledException();
-
-                            //In JSON format, Last item shall not have (,)
-                            if (i == result.Count - 1)
-                                sb.Append($"\"{result[i].Name}\" : \"\"");
-                            else
-                                sb.Append($"\"{result[i].Name}\" : \"\",");
-                        }
-
-                        //In JSON format, Last item shall not have (,)
-                        if (n == typesFulleName.Count - 1)
-                            sb.Append("}");
-                        else
-                            sb.Append("},");
-
-                        await sw.WriteAsync(sb.ToString());
-                        sb.Clear();
-                    }
-
-                    sb.Append("}");
-                    await sw.WriteAsync(sb.ToString());
-                    sb.Clear();                    
-                }
-            }
-
-            await Task.CompletedTask;
+            await CreateJsonFileAsync(typesFulleName, cancellationToken);
         }
 
         /// <summary>
@@ -146,15 +95,22 @@ namespace Ces.ClassToJson
         /// </summary>
         /// <param name="typesFulleName">List of typs' fullname</param>
         /// <returns></returns>
-        public async Task ConvertToJsonAsync(
-            CancellationToken cancellationToken = default)
+        public async Task ConvertToJsonAsync(CancellationToken cancellationToken = default)
+        {
+            var classList = await GetObjectsAsync(cancellationToken);
+            var typesFulleName = classList.DistinctBy(x => x.FullName).Select(x => x.FullName).ToList();
+
+            await CreateJsonFileAsync(typesFulleName, cancellationToken);
+            await Task.CompletedTask;
+        }
+
+        private async Task CreateJsonFileAsync(
+            List<string> typesFulleName, CancellationToken cancellationToken = default)
         {
             if (System.IO.File.Exists(_option.OutpuPath) && !_option.OverWrite)
                 throw new Exception("Overwrite is not allowes");
 
             var sb = new StringBuilder();
-            var classList = await GetObjectsAsync(cancellationToken);
-            var typesFulleName = classList.DistinctBy(x => x.FullName).Select(x => x.FullName).ToList();
 
             using (FileStream fs = new FileStream(_option.OutpuPath, FileMode.Create, FileAccess.Write))
             {
