@@ -11,6 +11,11 @@
         public bool UseAssemblyPath { get; set; } = true;
         public bool OverWrite { get; set; } = false;
         public OutputTypeEnum OutputType { get; set; } = OutputTypeEnum.Json;
+        /// <summary>
+        /// A namespace delimited by dot (.) and user can replace with another character
+        /// </summary>
+        public bool ReplaceNamespaceDelimiter { get; set; }
+        public char NamespaceDelimiter { get; set; }
     }
 
     public enum OutputTypeEnum

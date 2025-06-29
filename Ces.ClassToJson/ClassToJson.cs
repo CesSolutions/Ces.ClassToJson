@@ -44,7 +44,8 @@ namespace Ces.ClassToJson
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         /// <exception cref="OperationCanceledException"></exception>
-        public async Task<List<Type>> GetObjectsAsync(CancellationToken cancellationToken = default)
+        public async Task<List<Type>> GetObjectsAsync(
+            CancellationToken cancellationToken = default)
         {
             if (cancellationToken.IsCancellationRequested)
                 throw new OperationCanceledException();
@@ -95,7 +96,8 @@ namespace Ces.ClassToJson
         /// </summary>
         /// <param name="typesFulleName">List of typs' fullname</param>
         /// <returns></returns>
-        public async Task ConvertToJsonAsync(CancellationToken cancellationToken = default)
+        public async Task ConvertToJsonAsync(
+            CancellationToken cancellationToken = default)
         {
             var classList = await GetObjectsAsync(cancellationToken);
             var typesFulleName = classList.DistinctBy(x => x.FullName).Select(x => x.FullName).ToList();
