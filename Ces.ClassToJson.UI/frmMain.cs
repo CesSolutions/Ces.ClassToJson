@@ -216,7 +216,8 @@ namespace Ces.ClassToJson.UI
                     UseAssemblyPath = chkUseSamePath.Checked,
                     OverWrite = chkOverwrite.Checked,
                     RemoveNamespaceDelimiter = chkRemoveNamespaceDelimiter.Checked,
-                    NamespaceDelimiter = string.IsNullOrEmpty(txtNamespaceDelimiter.Text) ? null : char.Parse(txtNamespaceDelimiter.Text)
+                    NamespaceDelimiter = string.IsNullOrEmpty(txtNamespaceDelimiter.Text) ? null : char.Parse(txtNamespaceDelimiter.Text),
+                    AddDataType=chkAddDataType.Checked,
                 };
 
                 _cls = new Ces.ClassToJson.ClassToJson(option);

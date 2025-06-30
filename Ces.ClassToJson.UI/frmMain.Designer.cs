@@ -40,6 +40,7 @@
             btnSelectFile = new Button();
             lblAssmeblyPath = new Label();
             gbConvert = new GroupBox();
+            chkAddDataType = new CheckBox();
             txtNamespaceDelimiter = new TextBox();
             chkRemoveNamespaceDelimiter = new CheckBox();
             chkOverwrite = new CheckBox();
@@ -93,11 +94,11 @@
             // txtJsonResult
             // 
             txtJsonResult.Dock = DockStyle.Fill;
-            txtJsonResult.Location = new Point(0, 220);
+            txtJsonResult.Location = new Point(0, 268);
             txtJsonResult.Multiline = true;
             txtJsonResult.Name = "txtJsonResult";
             txtJsonResult.ScrollBars = ScrollBars.Both;
-            txtJsonResult.Size = new Size(573, 293);
+            txtJsonResult.Size = new Size(573, 245);
             txtJsonResult.TabIndex = 7;
             // 
             // pnlTop
@@ -107,7 +108,7 @@
             pnlTop.Dock = DockStyle.Top;
             pnlTop.Location = new Point(0, 0);
             pnlTop.Name = "pnlTop";
-            pnlTop.Size = new Size(573, 220);
+            pnlTop.Size = new Size(573, 268);
             pnlTop.TabIndex = 12;
             // 
             // gbAssembly
@@ -191,6 +192,7 @@
             // gbConvert
             // 
             gbConvert.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            gbConvert.Controls.Add(chkAddDataType);
             gbConvert.Controls.Add(txtNamespaceDelimiter);
             gbConvert.Controls.Add(chkRemoveNamespaceDelimiter);
             gbConvert.Controls.Add(chkOverwrite);
@@ -198,25 +200,35 @@
             gbConvert.Controls.Add(chkAllObjects);
             gbConvert.Location = new Point(6, 140);
             gbConvert.Name = "gbConvert";
-            gbConvert.Size = new Size(557, 75);
+            gbConvert.Size = new Size(557, 123);
             gbConvert.TabIndex = 11;
             gbConvert.TabStop = false;
             gbConvert.Text = "Convert";
             // 
+            // chkAddDataType
+            // 
+            chkAddDataType.AutoSize = true;
+            chkAddDataType.Location = new Point(6, 93);
+            chkAddDataType.Name = "chkAddDataType";
+            chkAddDataType.Size = new Size(102, 19);
+            chkAddDataType.TabIndex = 12;
+            chkAddDataType.Text = "Add Data Type";
+            chkAddDataType.UseVisualStyleBackColor = true;
+            // 
             // txtNamespaceDelimiter
             // 
             txtNamespaceDelimiter.Enabled = false;
-            txtNamespaceDelimiter.Location = new Point(473, 41);
+            txtNamespaceDelimiter.Location = new Point(197, 41);
             txtNamespaceDelimiter.MaxLength = 1;
             txtNamespaceDelimiter.Name = "txtNamespaceDelimiter";
-            txtNamespaceDelimiter.Size = new Size(78, 23);
+            txtNamespaceDelimiter.Size = new Size(67, 23);
             txtNamespaceDelimiter.TabIndex = 11;
             txtNamespaceDelimiter.TextAlign = HorizontalAlignment.Center;
             // 
             // chkRemoveNamespaceDelimiter
             // 
             chkRemoveNamespaceDelimiter.AutoSize = true;
-            chkRemoveNamespaceDelimiter.Location = new Point(282, 43);
+            chkRemoveNamespaceDelimiter.Location = new Point(6, 43);
             chkRemoveNamespaceDelimiter.Name = "chkRemoveNamespaceDelimiter";
             chkRemoveNamespaceDelimiter.Size = new Size(185, 19);
             chkRemoveNamespaceDelimiter.TabIndex = 10;
@@ -227,7 +239,7 @@
             // chkOverwrite
             // 
             chkOverwrite.AutoSize = true;
-            chkOverwrite.Location = new Point(143, 43);
+            chkOverwrite.Location = new Point(6, 68);
             chkOverwrite.Name = "chkOverwrite";
             chkOverwrite.Size = new Size(133, 19);
             chkOverwrite.TabIndex = 9;
@@ -236,7 +248,7 @@
             // 
             // btnConvertToJson
             // 
-            btnConvertToJson.Location = new Point(6, 22);
+            btnConvertToJson.Location = new Point(420, 22);
             btnConvertToJson.Name = "btnConvertToJson";
             btnConvertToJson.Size = new Size(131, 40);
             btnConvertToJson.TabIndex = 6;
@@ -247,7 +259,7 @@
             // chkAllObjects
             // 
             chkAllObjects.AutoSize = true;
-            chkAllObjects.Location = new Point(143, 22);
+            chkAllObjects.Location = new Point(6, 18);
             chkAllObjects.Name = "chkAllObjects";
             chkAllObjects.Size = new Size(266, 19);
             chkAllObjects.TabIndex = 8;
@@ -354,5 +366,6 @@
         private CheckBox chkOverwrite;
         private TextBox txtNamespaceDelimiter;
         private CheckBox chkRemoveNamespaceDelimiter;
+        private CheckBox chkAddDataType;
     }
 }
