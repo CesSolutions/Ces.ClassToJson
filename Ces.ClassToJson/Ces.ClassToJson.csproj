@@ -7,7 +7,7 @@
 		
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Title>Convert class models to Json string</Title>
-		<Version>1.0.2</Version>
+		<Version>1.5.0</Version>
 		<PackageIcon>CES.png</PackageIcon>
 		<RepositoryUrl>https://github.com/CesSolutions/Ces.ClassToJson</RepositoryUrl>
 		<Description>Please study readme file on repository</Description>
