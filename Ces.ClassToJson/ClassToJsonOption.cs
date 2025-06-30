@@ -16,6 +16,7 @@
         /// </summary>
         public bool RemoveNamespaceDelimiter { get; set; }        
         public char? NamespaceDelimiter { get; set; }
+        public bool AddDataType { get; set; }
     }
 
     public enum OutputTypeEnum
