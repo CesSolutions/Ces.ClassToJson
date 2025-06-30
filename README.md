@@ -30,7 +30,7 @@
   - **Remove Namespace Delimiter** If check this option and do not define any delimiter in text box, (.) will remove from namespace
 
 <div align="center">
-<img src="https://github.com/user-attachments/assets/ddee2083-d1f6-423c-8ed0-c07a88a219b3" width=1000>
+<img src="https://github.com/user-attachments/assets/0cb79907-e03b-4680-ac2a-c1697b90d157" width=1000>
 </div>
 
 ***
@@ -87,7 +87,3 @@ _cls = new Ces.ClassToJson.ClassToJson(option);
 - **GetObjectsAsync:** Return all classes in assembly then return a `List<Type>`.
 - **GetPropertiesAsync:** Return `List<string>` that consist of all properties of an object.
 - **ConvertToJsonAsync:** This method hae two overloads. If user dose not pass paramter, this method converts entire asembly to json otherwise only selected objects will convert to json. This method save result to file as stream.
-
-<div align="center">
-<img src="https://github.com/user-attachments/assets/81681176-3ac4-45b7-a1b2-e30600404d10">
-</div>
