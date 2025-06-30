@@ -8,10 +8,10 @@
 
 > Updates v1.5.0
 
-1- Check parent node in **TreeView** check all child nodes
-2- **Read Objects** button removed and readinf objects execute after selecting assembly
-3- Remove & Replace (.) in namespace. If nothing define in text box, (.) will remove
-4- Lessen size of JSON file by removing unnecessary space in json string
+- Check parent node in **TreeView** check all child nodes
+- **Read Objects** button removed and readinf objects execute after selecting assembly
+- Remove & Replace (.) in namespace. If nothing define in text box, (.) will remove
+- Lessen size of JSON file by removing unnecessary space in json string
 
 ***
 
