@@ -217,7 +217,7 @@ namespace Ces.ClassToJson.UI
                     OverWrite = chkOverwrite.Checked,
                     RemoveNamespaceDelimiter = chkRemoveNamespaceDelimiter.Checked,
                     NamespaceDelimiter = string.IsNullOrEmpty(txtNamespaceDelimiter.Text) ? null : char.Parse(txtNamespaceDelimiter.Text),
-                    AddDataType=chkAddDataType.Checked,
+                    AddDataType = chkAddDataType.Checked,
                 };
 
                 _cls = new Ces.ClassToJson.ClassToJson(option);
@@ -233,10 +233,20 @@ namespace Ces.ClassToJson.UI
 
         private void lblAssmeblyPath_Click(object sender, EventArgs e)
         {
+            OpenDirectory(_cls._option.AssemblyPath);
+        }
+
+        private void lblOutputPath_Click(object sender, EventArgs e)
+        {
+            OpenDirectory(_cls._option.OutpuPath);
+        }
+
+        private void OpenDirectory(string path)
+        {
             try
             {
                 if (_cls != null)
-                    Process.Start("explorer.exe", System.IO.Path.GetDirectoryName(_cls._option.AssemblyPath));
+                    Process.Start("explorer.exe", System.IO.Path.GetDirectoryName(path));
             }
             catch (Exception ex)
             {
@@ -264,6 +274,6 @@ namespace Ces.ClassToJson.UI
         private void chkRemoveNamespaceDelimiter_CheckedChanged(object sender, EventArgs e)
         {
             txtNamespaceDelimiter.Enabled = chkRemoveNamespaceDelimiter.Checked;
-        }
+        }      
     }
 }

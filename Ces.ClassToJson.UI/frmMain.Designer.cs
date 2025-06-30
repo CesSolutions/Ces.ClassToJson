@@ -152,6 +152,7 @@
             lblOutputPath.Size = new Size(545, 20);
             lblOutputPath.TabIndex = 12;
             lblOutputPath.TextAlign = ContentAlignment.MiddleLeft;
+            lblOutputPath.Click += lblOutputPath_Click;
             // 
             // btnOutputPath
             // 
