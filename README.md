@@ -1,8 +1,17 @@
-# Ces.ClassToJson + Ces.ClassToJson.UI
+# Ces.ClassToJson + UI
 
 <p>This packge with UI help to create JSON file to use in report designers as **ObjectModel** (For example in StimulReport).</p>
 
 <a href="https://www.nuget.org/packages/Ces.ClassToJson/">Nuget Package</a>
+
+***
+
+> Updates v1.5.0
+
+1- Check parent node in **TreeView** check all child nodes
+2- **Read Objects** button removed and readinf objects execute after selecting assembly
+3- Remove & Replace (.) in namespace. If nothing define in text box, (.) will remove
+4- Lessen size of JSON file by removing unnecessary space in json string
 
 ***
 
@@ -19,9 +28,10 @@
   - **Convert To Json:** Convert selected objects in tree view ot entire assembly to JSON string and save to file.
   - **All Objects:** If user check this, application convert all objects inassembly to jsonstring and save to output file and ignore selected objects in tree view.
   - **Overwrite if file exist:** Because of default naming of out JSON file consist of a fixed string and current date with time (ClassToJSon _ 2025-10-25 _ 23-20-65), it is possible that user click on convert button twice in a minute. If file exist already, application throw an exception otherwise user check this option to overwrite on existig file.
+  - **Remove Namespace Delimiter** If check this option and do not define any delimiter in text box, (.) will remove from namespace
 
 <div align="center">
-<img src="https://github.com/user-attachments/assets/9137a748-f2d6-491f-a476-bbd692bb363d" width=1000>
+<img src="https://github.com/user-attachments/assets/ddee2083-d1f6-423c-8ed0-c07a88a219b3" width=1000>
 </div>
 
 ***
@@ -42,6 +52,11 @@ namespace Ces.ClassToJson
         public bool UseAssemblyPath { get; set; } = true;
         public bool OverWrite { get; set; } = false;
         public OutputTypeEnum OutputType { get; set; } = OutputTypeEnum.Json;
+        /// <summary>
+        /// A namespace delimited by dot (.) and user can replace with another character
+        /// </summary>
+        public bool RemoveNamespaceDelimiter { get; set; }        
+        public char? NamespaceDelimiter { get; set; }
     }
 
     public enum OutputTypeEnum
@@ -61,7 +76,9 @@ var option = new Ces.ClassToJson.ClassToJsonOption
     AssemblyPath = _assembplyPath,
     OutpuPath = _outputPath,
     UseAssemblyPath = chkUseSamePath.Checked,
-    OverWrite = chkOverwrite.Checked
+    OverWrite = chkOverwrite.Checked,
+    RemoveNamespaceDelimiter = chkRemoveNamespaceDelimiter.Checked,
+    NamespaceDelimiter = string.IsNullOrEmpty(txtNamespaceDelimiter.Text) ? null : char.Parse(txtNamespaceDelimiter.Text)
 };
 
 _cls = new Ces.ClassToJson.ClassToJson(option);
