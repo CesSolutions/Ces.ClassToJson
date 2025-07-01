@@ -211,7 +211,8 @@ namespace Ces.ClassToJson
 
         /// <summary>
         /// When using json, third part application can diagnose data type by 
-        /// each value.
+        /// each value. So, this method based on option class can assign a value
+        /// to each type of property
         /// </summary>
         /// <param name="propertyInfo"></param>
         /// <returns></returns>
