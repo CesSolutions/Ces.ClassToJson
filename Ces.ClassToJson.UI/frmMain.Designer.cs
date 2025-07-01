@@ -131,7 +131,7 @@
             chkUseSamePath.AutoSize = true;
             chkUseSamePath.Checked = true;
             chkUseSamePath.CheckState = CheckState.Checked;
-            chkUseSamePath.Location = new Point(280, 34);
+            chkUseSamePath.Location = new Point(280, 33);
             chkUseSamePath.Name = "chkUseSamePath";
             chkUseSamePath.Size = new Size(272, 19);
             chkUseSamePath.TabIndex = 13;
@@ -157,7 +157,7 @@
             // btnOutputPath
             // 
             btnOutputPath.Enabled = false;
-            btnOutputPath.Location = new Point(143, 23);
+            btnOutputPath.Location = new Point(143, 22);
             btnOutputPath.Name = "btnOutputPath";
             btnOutputPath.Size = new Size(131, 40);
             btnOutputPath.TabIndex = 11;
