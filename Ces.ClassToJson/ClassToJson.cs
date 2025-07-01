@@ -127,6 +127,7 @@ namespace Ces.ClassToJson
 
                         var result = await GetPropertiesAsync(typesFulleName[n]);
 
+                        //Create Model Name (Namespace)
                         if (_option.RemoveNamespaceDelimiter)
                             sb.Append($"\"{typesFulleName[n].Replace(".", _option.NamespaceDelimiter.ToString().Trim())}\":");
                         else
@@ -134,6 +135,7 @@ namespace Ces.ClassToJson
 
                         sb.Append("{");
 
+                        //Create Key/Value
                         for (int i = 0; i < result.Count; i++)
                         {
                             if (cancellationToken.IsCancellationRequested)
@@ -223,11 +225,11 @@ namespace Ces.ClassToJson
             if (dataType == typeof(string))
                 return $"\"{propertyInfo.Name}\":\"acb\"";
             else if (dataType == typeof(float) || dataType == typeof(float?))
-                return 3.14;
+                return $"\"{propertyInfo.Name}\":{3.14}";
             else if (dataType == typeof(double) || dataType == typeof(double?))
-                return 12345.6789;
+                return $"\"{propertyInfo.Name}\":{12345.6789}";
             else if (dataType == typeof(decimal) || dataType == typeof(decimal?))
-                return 99999.99;
+                return $"\"{propertyInfo.Name}\":{99999.99}";
             else if (dataType == typeof(DateTime) || dataType == typeof(DateTime?))
                 return $"\"{propertyInfo.Name}\":\"2025-06-29T15:30:00\"";
             else if (dataType == typeof(TimeSpan) || dataType == typeof(TimeSpan?))
@@ -235,23 +237,23 @@ namespace Ces.ClassToJson
             else if (dataType == typeof(DateTimeOffset) || dataType == typeof(DateTimeOffset?))
                 return $"\"{propertyInfo.Name}\":\"2025-06-29T23:45:00+03:30\"";
             else if (dataType == typeof(sbyte) || dataType == typeof(sbyte?))
-                return -128;
+                return $"\"{propertyInfo.Name}\":{-128}";
             else if (dataType == typeof(byte) || dataType == typeof(byte?))
-                return 255;
+                return $"\"{propertyInfo.Name}\":{255}";
             else if (dataType == typeof(byte[]) || dataType == typeof(byte?[]))
                 return $"\"{propertyInfo.Name}\":\"AAECAwQFBgc\"";
             else if (dataType == typeof(short) || dataType == typeof(short?))
-                return 32767;
+                return $"\"{propertyInfo.Name}\":{32767}";
             else if (dataType == typeof(ushort) || dataType == typeof(ushort?))
-                return 65535;
+                return $"\"{propertyInfo.Name}\":{65535}";
             else if (dataType == typeof(int) || dataType == typeof(int?))
-                return 123;
+                return $"\"{propertyInfo.Name}\":{123}";
             else if (dataType == typeof(uint) || dataType == typeof(uint?))
-                return 4294967295;
+                return $"\"{propertyInfo.Name}\":{4294967295}";
             else if (dataType == typeof(long) || dataType == typeof(long?))
-                return 9223372036854775807;
+                return $"\"{propertyInfo.Name}\":{9223372036854775807}";
             else if (dataType == typeof(ulong) || dataType == typeof(ulong?))
-                return 18446744073709551615;
+                return $"\"{propertyInfo.Name}\":{18446744073709551615}";
             else if (dataType == typeof(bool) || dataType == typeof(bool?))
                 return $"\"{propertyInfo.Name}\":{true.ToString().ToLower()}";
             else if (dataType == typeof(char) || dataType == typeof(char?))
@@ -259,7 +261,7 @@ namespace Ces.ClassToJson
             else if (dataType == typeof(Guid) || dataType == typeof(Guid?))
                 return $"\"{propertyInfo.Name}\":\"3fa85f64-5717-4562-b3fc-2c963f66afa6\"";
             else
-                return null;
+                return $"\"{propertyInfo.Name}\":\"\"";
         }
     }
 }
