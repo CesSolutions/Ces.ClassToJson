@@ -209,7 +209,7 @@
             // chkAddDataType
             // 
             chkAddDataType.AutoSize = true;
-            chkAddDataType.Location = new Point(6, 93);
+            chkAddDataType.Location = new Point(280, 97);
             chkAddDataType.Name = "chkAddDataType";
             chkAddDataType.Size = new Size(102, 19);
             chkAddDataType.TabIndex = 12;
@@ -219,7 +219,7 @@
             // txtNamespaceDelimiter
             // 
             txtNamespaceDelimiter.Enabled = false;
-            txtNamespaceDelimiter.Location = new Point(197, 41);
+            txtNamespaceDelimiter.Location = new Point(471, 45);
             txtNamespaceDelimiter.MaxLength = 1;
             txtNamespaceDelimiter.Name = "txtNamespaceDelimiter";
             txtNamespaceDelimiter.Size = new Size(67, 23);
@@ -229,7 +229,7 @@
             // chkRemoveNamespaceDelimiter
             // 
             chkRemoveNamespaceDelimiter.AutoSize = true;
-            chkRemoveNamespaceDelimiter.Location = new Point(6, 43);
+            chkRemoveNamespaceDelimiter.Location = new Point(280, 47);
             chkRemoveNamespaceDelimiter.Name = "chkRemoveNamespaceDelimiter";
             chkRemoveNamespaceDelimiter.Size = new Size(185, 19);
             chkRemoveNamespaceDelimiter.TabIndex = 10;
@@ -240,7 +240,7 @@
             // chkOverwrite
             // 
             chkOverwrite.AutoSize = true;
-            chkOverwrite.Location = new Point(6, 68);
+            chkOverwrite.Location = new Point(280, 72);
             chkOverwrite.Name = "chkOverwrite";
             chkOverwrite.Size = new Size(133, 19);
             chkOverwrite.TabIndex = 9;
@@ -249,7 +249,7 @@
             // 
             // btnConvertToJson
             // 
-            btnConvertToJson.Location = new Point(420, 22);
+            btnConvertToJson.Location = new Point(6, 22);
             btnConvertToJson.Name = "btnConvertToJson";
             btnConvertToJson.Size = new Size(131, 40);
             btnConvertToJson.TabIndex = 6;
@@ -260,7 +260,7 @@
             // chkAllObjects
             // 
             chkAllObjects.AutoSize = true;
-            chkAllObjects.Location = new Point(6, 18);
+            chkAllObjects.Location = new Point(280, 22);
             chkAllObjects.Name = "chkAllObjects";
             chkAllObjects.Size = new Size(266, 19);
             chkAllObjects.TabIndex = 8;

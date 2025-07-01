@@ -134,6 +134,7 @@ namespace Ces.ClassToJson.UI
 
         private async void btnSelectFile_Click(object sender, EventArgs e)
         {
+            btnConvertToJson.Enabled = false;
             var open = new OpenFileDialog();
             open.Multiselect = false;
             open.RestoreDirectory = true;
@@ -153,6 +154,10 @@ namespace Ces.ClassToJson.UI
             {
                 _cancellationTokenSource.Cancel();
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                btnConvertToJson.Enabled = true;
             }
         }
 
