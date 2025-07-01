@@ -81,7 +81,7 @@ namespace Ces.ClassToJson
         }
 
         /// <summary>
-        /// Create json string
+        /// Convert list of types to json file
         /// </summary>
         /// <param name="typesFulleName">List of typs' fullname</param>
         /// <returns></returns>
@@ -92,9 +92,9 @@ namespace Ces.ClassToJson
         }
 
         /// <summary>
-        /// Create json string
+        /// Convert entire assembly to json file 
         /// </summary>
-        /// <param name="typesFulleName">List of typs' fullname</param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
         public async Task ConvertToJsonAsync(
             CancellationToken cancellationToken = default)
