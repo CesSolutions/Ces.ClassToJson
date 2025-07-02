@@ -6,12 +6,10 @@
 
 ***
 
-> Updates v1.5.0
+> Updates v1.5.1
 
-- Check parent node in **TreeView** check all child nodes
-- **Read Objects** button removed and readinf objects execute after selecting assembly
-- Remove & Replace (.) in namespace. If nothing define in text box, (.) will remove
-- Lessen size of JSON file by removing unnecessary space in json string
+- UI chaged and added a check box to add dada type to json proeprty
+- Nuget package create more accurate json string
 
 ***
 
@@ -27,7 +25,8 @@
   - **Convert To Json:** Convert selected objects in tree view ot entire assembly to JSON string and save to file.
   - **All Objects:** If user check this, application convert all objects inassembly to jsonstring and save to output file and ignore selected objects in tree view.
   - **Overwrite if file exist:** Because of default naming of out JSON file consist of a fixed string and current date with time (ClassToJSon _ 2025-10-25 _ 23-20-65), it is possible that user click on convert button twice in a minute. If file exist already, application throw an exception otherwise user check this option to overwrite on existig file.
-  - **Remove Namespace Delimiter** If check this option and do not define any delimiter in text box, (.) will remove from namespace
+  - **Remove Namespace Delimiter:** If check this option and do not define any delimiter in text box, (.) will remove from namespace
+  - **AddDataType:** Add value in front of property of json model randomly (StimulDesinger detect data type by value)
 
 <div align="center">
 <img src="https://github.com/user-attachments/assets/0cb79907-e03b-4680-ac2a-c1697b90d157" width=1000>
@@ -56,6 +55,7 @@ namespace Ces.ClassToJson
         /// </summary>
         public bool RemoveNamespaceDelimiter { get; set; }        
         public char? NamespaceDelimiter { get; set; }
+        public bool AddDataType { get; set; }
     }
 
     public enum OutputTypeEnum
@@ -77,7 +77,8 @@ var option = new Ces.ClassToJson.ClassToJsonOption
     UseAssemblyPath = chkUseSamePath.Checked,
     OverWrite = chkOverwrite.Checked,
     RemoveNamespaceDelimiter = chkRemoveNamespaceDelimiter.Checked,
-    NamespaceDelimiter = string.IsNullOrEmpty(txtNamespaceDelimiter.Text) ? null : char.Parse(txtNamespaceDelimiter.Text)
+    NamespaceDelimiter = string.IsNullOrEmpty(txtNamespaceDelimiter.Text) ? null : char.Parse(txtNamespaceDelimiter.Text),
+    AddDataType = chkAddDataType.Checked,
 };
 
 _cls = new Ces.ClassToJson.ClassToJson(option);
