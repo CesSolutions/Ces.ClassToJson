@@ -29,7 +29,7 @@
   - **AddDataType:** Add value in front of property of json model randomly (StimulDesinger detect data type by value)
 
 <div align="center">
-<img src="https://github.com/user-attachments/assets/0cb79907-e03b-4680-ac2a-c1697b90d157" width=1000>
+<img src="https://github.com/user-attachments/assets/3fe2ee86-7949-4f96-91da-ed0edb46474a">
 </div>
 
 ***
