@@ -65,7 +65,7 @@
             splitter1.BackColor = SystemColors.Control;
             splitter1.Location = new Point(441, 0);
             splitter1.Name = "splitter1";
-            splitter1.Size = new Size(5, 449);
+            splitter1.Size = new Size(5, 494);
             splitter1.TabIndex = 2;
             splitter1.TabStop = false;
             // 
@@ -77,7 +77,7 @@
             tvTypes.HotTracking = true;
             tvTypes.Location = new Point(0, 0);
             tvTypes.Name = "tvTypes";
-            tvTypes.Size = new Size(441, 392);
+            tvTypes.Size = new Size(441, 437);
             tvTypes.TabIndex = 3;
             tvTypes.NodeMouseClick += tvTypes_NodeMouseClick;
             // 
@@ -88,7 +88,7 @@
             pnlMain.Dock = DockStyle.Fill;
             pnlMain.Location = new Point(446, 0);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(427, 449);
+            pnlMain.Size = new Size(427, 494);
             pnlMain.TabIndex = 6;
             // 
             // txtJsonResult
@@ -98,7 +98,7 @@
             txtJsonResult.Multiline = true;
             txtJsonResult.Name = "txtJsonResult";
             txtJsonResult.ScrollBars = ScrollBars.Both;
-            txtJsonResult.Size = new Size(427, 119);
+            txtJsonResult.Size = new Size(427, 164);
             txtJsonResult.TabIndex = 7;
             // 
             // pnlTop
@@ -284,8 +284,8 @@
             splitContainer1.Panel2.Controls.Add(btnCancel);
             splitContainer1.Panel2.Controls.Add(btnClearSelection);
             splitContainer1.Panel2.Controls.Add(btnExpandAll);
-            splitContainer1.Size = new Size(441, 449);
-            splitContainer1.SplitterDistance = 392;
+            splitContainer1.Size = new Size(441, 494);
+            splitContainer1.SplitterDistance = 437;
             splitContainer1.TabIndex = 11;
             // 
             // btnCancel
@@ -324,7 +324,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(873, 449);
+            ClientSize = new Size(873, 494);
             Controls.Add(pnlMain);
             Controls.Add(splitter1);
             Controls.Add(splitContainer1);
