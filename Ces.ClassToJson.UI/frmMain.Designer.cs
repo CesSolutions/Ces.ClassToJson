@@ -65,7 +65,7 @@
             splitter1.BackColor = SystemColors.Control;
             splitter1.Location = new Point(441, 0);
             splitter1.Name = "splitter1";
-            splitter1.Size = new Size(5, 513);
+            splitter1.Size = new Size(5, 449);
             splitter1.TabIndex = 2;
             splitter1.TabStop = false;
             // 
@@ -77,7 +77,7 @@
             tvTypes.HotTracking = true;
             tvTypes.Location = new Point(0, 0);
             tvTypes.Name = "tvTypes";
-            tvTypes.Size = new Size(441, 456);
+            tvTypes.Size = new Size(441, 392);
             tvTypes.TabIndex = 3;
             tvTypes.NodeMouseClick += tvTypes_NodeMouseClick;
             // 
@@ -88,17 +88,17 @@
             pnlMain.Dock = DockStyle.Fill;
             pnlMain.Location = new Point(446, 0);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(573, 513);
+            pnlMain.Size = new Size(427, 449);
             pnlMain.TabIndex = 6;
             // 
             // txtJsonResult
             // 
             txtJsonResult.Dock = DockStyle.Fill;
-            txtJsonResult.Location = new Point(0, 268);
+            txtJsonResult.Location = new Point(0, 330);
             txtJsonResult.Multiline = true;
             txtJsonResult.Name = "txtJsonResult";
             txtJsonResult.ScrollBars = ScrollBars.Both;
-            txtJsonResult.Size = new Size(573, 245);
+            txtJsonResult.Size = new Size(427, 119);
             txtJsonResult.TabIndex = 7;
             // 
             // pnlTop
@@ -108,7 +108,7 @@
             pnlTop.Dock = DockStyle.Top;
             pnlTop.Location = new Point(0, 0);
             pnlTop.Name = "pnlTop";
-            pnlTop.Size = new Size(573, 268);
+            pnlTop.Size = new Size(427, 330);
             pnlTop.TabIndex = 12;
             // 
             // gbAssembly
@@ -121,7 +121,7 @@
             gbAssembly.Controls.Add(lblAssmeblyPath);
             gbAssembly.Location = new Point(6, 12);
             gbAssembly.Name = "gbAssembly";
-            gbAssembly.Size = new Size(557, 122);
+            gbAssembly.Size = new Size(411, 139);
             gbAssembly.TabIndex = 12;
             gbAssembly.TabStop = false;
             gbAssembly.Text = "Assembly";
@@ -131,7 +131,7 @@
             chkUseSamePath.AutoSize = true;
             chkUseSamePath.Checked = true;
             chkUseSamePath.CheckState = CheckState.Checked;
-            chkUseSamePath.Location = new Point(280, 33);
+            chkUseSamePath.Location = new Point(6, 114);
             chkUseSamePath.Name = "chkUseSamePath";
             chkUseSamePath.Size = new Size(272, 19);
             chkUseSamePath.TabIndex = 13;
@@ -147,9 +147,9 @@
             lblOutputPath.Cursor = Cursors.Hand;
             lblOutputPath.Font = new Font("Segoe UI", 8F);
             lblOutputPath.ForeColor = Color.FromArgb(0, 192, 0);
-            lblOutputPath.Location = new Point(6, 97);
+            lblOutputPath.Location = new Point(143, 73);
             lblOutputPath.Name = "lblOutputPath";
-            lblOutputPath.Size = new Size(545, 20);
+            lblOutputPath.Size = new Size(262, 30);
             lblOutputPath.TabIndex = 12;
             lblOutputPath.TextAlign = ContentAlignment.MiddleLeft;
             lblOutputPath.Click += lblOutputPath_Click;
@@ -157,7 +157,7 @@
             // btnOutputPath
             // 
             btnOutputPath.Enabled = false;
-            btnOutputPath.Location = new Point(143, 22);
+            btnOutputPath.Location = new Point(6, 68);
             btnOutputPath.Name = "btnOutputPath";
             btnOutputPath.Size = new Size(131, 40);
             btnOutputPath.TabIndex = 11;
@@ -183,9 +183,9 @@
             lblAssmeblyPath.Cursor = Cursors.Hand;
             lblAssmeblyPath.Font = new Font("Segoe UI", 8F);
             lblAssmeblyPath.ForeColor = Color.Blue;
-            lblAssmeblyPath.Location = new Point(6, 73);
+            lblAssmeblyPath.Location = new Point(143, 27);
             lblAssmeblyPath.Name = "lblAssmeblyPath";
-            lblAssmeblyPath.Size = new Size(545, 20);
+            lblAssmeblyPath.Size = new Size(262, 30);
             lblAssmeblyPath.TabIndex = 10;
             lblAssmeblyPath.TextAlign = ContentAlignment.MiddleLeft;
             lblAssmeblyPath.Click += lblAssmeblyPath_Click;
@@ -199,9 +199,9 @@
             gbConvert.Controls.Add(chkOverwrite);
             gbConvert.Controls.Add(btnConvertToJson);
             gbConvert.Controls.Add(chkAllObjects);
-            gbConvert.Location = new Point(6, 140);
+            gbConvert.Location = new Point(6, 157);
             gbConvert.Name = "gbConvert";
-            gbConvert.Size = new Size(557, 123);
+            gbConvert.Size = new Size(411, 168);
             gbConvert.TabIndex = 11;
             gbConvert.TabStop = false;
             gbConvert.Text = "Convert";
@@ -209,7 +209,7 @@
             // chkAddDataType
             // 
             chkAddDataType.AutoSize = true;
-            chkAddDataType.Location = new Point(280, 97);
+            chkAddDataType.Location = new Point(6, 97);
             chkAddDataType.Name = "chkAddDataType";
             chkAddDataType.Size = new Size(102, 19);
             chkAddDataType.TabIndex = 12;
@@ -219,7 +219,7 @@
             // txtNamespaceDelimiter
             // 
             txtNamespaceDelimiter.Enabled = false;
-            txtNamespaceDelimiter.Location = new Point(471, 45);
+            txtNamespaceDelimiter.Location = new Point(197, 45);
             txtNamespaceDelimiter.MaxLength = 1;
             txtNamespaceDelimiter.Name = "txtNamespaceDelimiter";
             txtNamespaceDelimiter.Size = new Size(67, 23);
@@ -229,7 +229,7 @@
             // chkRemoveNamespaceDelimiter
             // 
             chkRemoveNamespaceDelimiter.AutoSize = true;
-            chkRemoveNamespaceDelimiter.Location = new Point(280, 47);
+            chkRemoveNamespaceDelimiter.Location = new Point(6, 47);
             chkRemoveNamespaceDelimiter.Name = "chkRemoveNamespaceDelimiter";
             chkRemoveNamespaceDelimiter.Size = new Size(185, 19);
             chkRemoveNamespaceDelimiter.TabIndex = 10;
@@ -240,7 +240,7 @@
             // chkOverwrite
             // 
             chkOverwrite.AutoSize = true;
-            chkOverwrite.Location = new Point(280, 72);
+            chkOverwrite.Location = new Point(6, 72);
             chkOverwrite.Name = "chkOverwrite";
             chkOverwrite.Size = new Size(133, 19);
             chkOverwrite.TabIndex = 9;
@@ -249,7 +249,7 @@
             // 
             // btnConvertToJson
             // 
-            btnConvertToJson.Location = new Point(6, 22);
+            btnConvertToJson.Location = new Point(6, 122);
             btnConvertToJson.Name = "btnConvertToJson";
             btnConvertToJson.Size = new Size(131, 40);
             btnConvertToJson.TabIndex = 6;
@@ -260,7 +260,7 @@
             // chkAllObjects
             // 
             chkAllObjects.AutoSize = true;
-            chkAllObjects.Location = new Point(280, 22);
+            chkAllObjects.Location = new Point(6, 22);
             chkAllObjects.Name = "chkAllObjects";
             chkAllObjects.Size = new Size(266, 19);
             chkAllObjects.TabIndex = 8;
@@ -284,8 +284,8 @@
             splitContainer1.Panel2.Controls.Add(btnCancel);
             splitContainer1.Panel2.Controls.Add(btnClearSelection);
             splitContainer1.Panel2.Controls.Add(btnExpandAll);
-            splitContainer1.Size = new Size(441, 513);
-            splitContainer1.SplitterDistance = 456;
+            splitContainer1.Size = new Size(441, 449);
+            splitContainer1.SplitterDistance = 392;
             splitContainer1.TabIndex = 11;
             // 
             // btnCancel
@@ -324,7 +324,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1019, 513);
+            ClientSize = new Size(873, 449);
             Controls.Add(pnlMain);
             Controls.Add(splitter1);
             Controls.Add(splitContainer1);
